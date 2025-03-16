@@ -1,0 +1,107 @@
+services:
+  velocity:
+    image: itzg/mc-proxy:java21-2025.1.0
+    container_name: illegal_crime_velocity
+    user: "${UID}:${GID}"
+    restart: unless-stopped
+    depends_on:
+      luckperms_db:
+        condition: service_healthy
+        restart: true
+    secrets:
+      - rcon_password
+      - forwarding_secret
+      - dclink_guild
+      - dclink_channel
+      - dclink_role
+      - dclink_token
+      - luckperms_db_password
+    networks:
+      illegal_crime_mc_network:
+        ipv4_address: "10.100.1.3"
+    ports:
+      - 25565:25565/tcp
+    volumes:
+      - ./velocity/data:/server:rw
+      - ./velocity/config:/config:ro
+    environment:
+      TYPE: VELOCITY
+      SERVER_NAME: Illegal Crime
+      MINECRAFT_VERSION: "1.21.3"
+      INIT_MEMORY: 512m
+      MAX_MEMORY: 1G
+
+      REPLACE_ENV_VARIABLES: true
+      ENV_VARIABLE_PREFIX: CFG_
+      
+      ENABLE_RCON: true
+      RCON_PORT: 25575
+      RCON_PASSWORD_FILE: /run/secrets/rcon_password
+      CFG_RCON_PASSWORD_FILE: /run/secrets/rcon_password
+    
+      CFG_DCLINK_GUILD_FILE: /run/secrets/dclink_guild
+      CFG_DCLINK_CHANNEL_FILE: /run/secrets/dclink_channel
+      CFG_DCLINK_ROLE_FILE: /run/secrets/dclink_role
+      CFG_DCLINK_TOKEN_FILE: /run/secrets/dclink_token
+
+      CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
+
+      PLUGINS: |
+        https://github.com/dbkynd-minecraft/VelocityPlayerList/releases/download/v1.0/PlayerList-1.0.jar
+      MODRINTH_PROJECTS: |
+        dclink:EjvGsLkv
+        luckperms:vtXGoeps
+        signedvelocity:Jp1p9BHR
+        velocitab:TTtLPunq
+  
+  luckperms_db:
+    image: postgres:17.4
+    container_name: illegal_crime_luckperms_db
+    user: "${UID}:${GID}"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U luckperms -d luckperms"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    secrets:
+      - luckperms_db_password
+    networks:
+      illegal_crime_mc_network:
+        ipv4_address: "10.100.1.2"
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - ./luckperms/data:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/luckperms_db_password
+      POSTGRES_USER: luckperms
+      POSTGRES_DB: luckperms
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+secrets:
+  rcon_password:
+    environment: RCON_PASSWORD
+  forwarding_secret:
+    environment: FORWARDING_SECRET
+  dclink_guild:
+    environment: DCLINK_GUILD
+  dclink_channel:
+    environment: DCLINK_CHANNEL
+  dclink_role:
+    environment: DCLINK_ROLE
+  dclink_token:
+    environment: DCLINK_TOKEN
+  luckperms_db_password:
+    environment: LUCKPERMS_DB_PASSWORD
+
+networks:
+  illegal_crime_mc_network:
+    name: illegal_crime_mc_network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "10.100.1.0/24"
+          gateway: "10.100.1.1"
+

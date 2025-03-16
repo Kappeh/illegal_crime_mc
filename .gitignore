@@ -1,0 +1,11 @@
+# Ignore the .git directory when using `tree --gitignore -a`.
+/.git
+
+# Ignore environment variable files containing secrets.
+/.env
+
+# Docker volumes
+/velocity/data/*
+/luckperms/data/*
+
+!/**/.keep
