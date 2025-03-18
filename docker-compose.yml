@@ -56,9 +56,9 @@ services:
         luckperms:vtXGoeps
         signedvelocity:Jp1p9BHR
         velocitab:TTtLPunq
- 
+
   fabric:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:2025.3.0-java23
     container_name: illegal_crime_fabric
     restart: unless-stopped
     depends_on:
@@ -122,10 +122,9 @@ services:
       ENABLE_RCON: true
       RCON_PORT: 25575
       RCON_PASSWORD_FILE: /run/secrets/rcon_password
-      CFG_RCON_PASSWORD_FILE: /run/secrets/rcon_password
-  
-      CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
 
+      CFG_RCON_PASSWORD_FILE: /run/secrets/rcon_password
+      CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
       CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
 
       RCON_CMDS_STARTUP: |-
