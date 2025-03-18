@@ -1,0 +1,14 @@
+{
+  "meter": {
+    "allow_teleports": true
+  },
+  "meter_group": {
+    "meter_limit": -1,
+    "max_idle_time": 72000
+  },
+  "event_types": {
+    "allowed": "all",
+    "blacklist": [],
+    "whitelist": []
+  }
+}

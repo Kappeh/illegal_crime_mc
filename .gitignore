@@ -5,7 +5,17 @@
 /.env
 
 # Docker volumes
-/velocity/data/*
-/luckperms/data/*
+/velocity/data/**
+!/velocity/data/.keep
 
-!/**/.keep
+/luckperms/data/**
+!/luckperms/data/.keep
+
+/schematics/**
+
+/fabric/data/**
+!/fabric/data/config
+!/fabric/data/config/worldedit
+!/fabric/data/config/worldedit/schematics
+!/fabric/data/config/worldedit/schematics/.keep
+

@@ -5,6 +5,9 @@ services:
     user: "${UID}:${GID}"
     restart: unless-stopped
     depends_on:
+      fabric:
+        condition: service_healthy
+        restart: true
       luckperms_db:
         condition: service_healthy
         restart: true
@@ -20,7 +23,7 @@ services:
       illegal_crime_mc_network:
         ipv4_address: "10.100.1.3"
     ports:
-      - 25565:25565/tcp
+      - "${VELOCITY_PORT}:25565/tcp"
     volumes:
       - ./velocity/data:/server:rw
       - ./velocity/config:/config:ro
@@ -53,7 +56,134 @@ services:
         luckperms:vtXGoeps
         signedvelocity:Jp1p9BHR
         velocitab:TTtLPunq
+ 
+  fabric:
+    image: itzg/minecraft-server
+    container_name: illegal_crime_fabric
+    restart: unless-stopped
+    depends_on:
+      luckperms_db:
+        condition: service_healthy
+        restart: true
+    secrets:
+      - rcon_password
+      - forwarding_secret
+      - luckperms_db_password
+    networks:
+      illegal_crime_mc_network:
+        ipv4_address: "10.100.1.5"
+    volumes:
+      - ./fabric/data:/data:rw
+      - ./fabric/config:/config:ro
+      - ./schematics:/data/config/worldedit/schematics:rw
+    environment:
+      UID: "${UID}"
+      GID: "${GID}"
+
+      EULA: true
+      TYPE: FABRIC
+      SERVER_NAME: Illegal Crime Fabric
+      MOTD: Credit
+      VERSION: "1.21.3"
+      INIT_MEMORY: 512m
+      MAX_MEMORY: 4G
+      ENABLE_AUTOPAUSE: true
+      MAX_TICK_TIME: -1
+
+      ENFORCE_SECURE_PROFILE: false
+      SNOOPER_ENABLED: false
+      ENABLE_QUERY: false
+
+      BROADCAST_CONSOLE_TO_OPS: false
+      BROADCAST_RCON_TO_OPS: false
+      
+      ONLINE_MODE: false
+      OP_PERMISSION_LEVEL: 2
+      MAX_PLAYERS: 50
+      DIFFICULTY: easy
+      LEVEL: world
+      
+      MODE: creative
+      LEVEL_TYPE: minecraft:flat
+      ENABLE_COMMAND_BLOCK: true
+      GENERATE_STRUCTURES: false
+      SPAWN_ANIMALS: false
+      SPAWN_MONSTERS: false
+      SPAWN_NPCS: false
+      SPAWN_PROTECTION: 0
+      
+      USE_AIKAR_FLAGS: true
+      LOG_TIMESTAMP: true
+
+      REPLACE_ENV_IN_PLACE: true
+      REPLACE_ENV_DURING_SYNC: true
+      REPLACE_ENV_VARIABLE_PREFIX: CFG_
+
+      ENABLE_RCON: true
+      RCON_PORT: 25575
+      RCON_PASSWORD_FILE: /run/secrets/rcon_password
+      CFG_RCON_PASSWORD_FILE: /run/secrets/rcon_password
   
+      CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
+
+      CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
+
+      RCON_CMDS_STARTUP: |-
+        gamerule announceAdvancements false
+        gamerule commandBlocksEnabled true
+        gamerule commandBlockOutput false
+        gamerule doDaylightCycle false
+        gamerule doEntityDrops false
+        gamerule doFireTick false
+        gamerule doInsomnia false
+        gamerule doImmediateRespawn true
+        gamerule doMobLoot false
+        gamerule doMobSpawning false
+        gamerule doPatrolSpawning false
+        gamerule doTileDrops false
+        gamerule doTraderSpawning false
+        gamerule doVinesSpread false
+        gamerule doWeatherCycle false
+        gamerule doWardenSpawning false
+        gamerule keepInventory true
+        gamerule logAdminCommands false
+        gamerule modGriefing false
+        gamerule playersSleepingPercentage 0
+        gamerule recipesUnlock false
+        gamerule showRecipeMessages false
+        gamerule tntExplodes false
+        time set 1000
+        weather clear
+      
+      MODRINTH_PROJECTS: |
+        badpackets:hjhT2sMz
+        carpet-extra:WDB4578I
+        carpet-tis-addition:znBCTqSr
+        cloth-config:FgXq8Sfo
+        collective:UqTBXnWC
+        capture-playback:YmnYuB3l
+        carpet:ZF8ufR9V
+        fabric-api:Ybg4nYGj
+        fabricproxy-lite:AQhF7kvw
+        fabric-language-kotlin:476dzMG5
+        g4mespeed:oPV7qsy2
+        krypton:Acz3ttTp
+        ksyxis:ueN87SNs
+        litematica-server-paster:LttjgeM4
+        lithium:W0Cc7ZVd
+        luckperms:S8033hpf
+        mods-command:1F0YwdWN
+        no-chat-reports:Cg7X9iDa
+        packet-fixer:XBM9PO5r
+        redstone-multimeter:kTiP34Lj
+        servercore:PgKTFLEL
+        servux:u85kwLvC
+        signedvelocity:AusZl7xe
+        spark:rExumjPo
+        threadtweak:HV6EY0h3
+        vanilla-permissions:7awQNHzw
+        worldedit:3TQ8W0Ar
+
   luckperms_db:
     image: postgres:17.4
     container_name: illegal_crime_luckperms_db
