@@ -12,14 +12,14 @@ remove_nametags: false
 # Whether to disable header and footer if they are empty and let backend servers handle them.
 disable_header_footer_if_empty: true
 # Which text formatter to use (MINIMESSAGE, MINEDOWN or LEGACY)
-formatter: MINIMESSAGE
+formatter: MINEDOWN
 # All servers which are not in other groups will be put in the fallback group.
 # "false" will exclude them from Velocitab.
 fallback_enabled: true
 # The formats to use for the fallback group.
 fallback_group: default
 # Whether to show all players from all groups in the TAB list.
-show_all_players_from_all_groups: false
+show_all_players_from_all_groups: true
 # Whether to enable the PAPIProxyBridge hook for PAPI support
 enable_papi_hook: true
 # How long in seconds to cache PAPI placeholders for, in milliseconds. (0 to disable)
@@ -39,7 +39,7 @@ remove_spectator_effect: true
 # Whether to enable the Plugin Message API (allows backend plugins to perform certain operations)
 enable_plugin_message_api: true
 # Whether to force sending tab list packets to all players, even if a packet for that action has already been sent. This could fix issues with some mods.
-force_sending_tab_list_packets: false
+force_sending_tab_list_packets: true
 # Whether to enable relational placeholders. With an high amount of players, this could cause lag.
 enable_relational_placeholders: false
 # A list of links that will be sent to display on player pause menus (Minecraft 1.21+ clients only).
