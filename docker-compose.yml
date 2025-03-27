@@ -56,6 +56,7 @@ services:
         https://github.com/dbkynd-minecraft/VelocityPlayerList/releases/download/v1.0/PlayerList-1.0.jar
       MODRINTH_PROJECTS: |
         dclink:EjvGsLkv
+        huskchat:SZxRjPf7
         luckperms:vtXGoeps
         signedvelocity:Jp1p9BHR
         velocitab:TTtLPunq
@@ -132,9 +133,6 @@ services:
       CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
       CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
       
-      # RCON_CMDS_STARTUP: |-
-      #   gamerule announceAdvancements false
-
       PLUGINS: |
         https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
 
