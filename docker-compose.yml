@@ -8,6 +8,9 @@ services:
       fabric:
         condition: service_healthy
         restart: true
+      paper:
+        condition: service_healthy
+        restart: true
       luckperms_db:
         condition: service_healthy
         restart: true
@@ -57,6 +60,94 @@ services:
         signedvelocity:Jp1p9BHR
         velocitab:TTtLPunq
 
+  paper:
+    image: itzg/minecraft-server:2025.3.0-java23
+    container_name: illegal_crime_paper
+    restart: unless-stopped
+    depends_on:
+      luckperms_db:
+        condition: service_healthy
+        restart: true
+    secrets:
+      - rcon_password
+      - forwarding_secret
+      - luckperms_db_password
+    networks:
+      illegal_crime_mc_network:
+        ipv4_address: "10.100.1.4"
+    volumes:
+      - ./paper/data:/data:rw
+      - ./paper/config:/config:ro
+      - ./paper/plugins:/plugins:ro
+      - ./schematics:/data/plugins/WorldEdit/schematics:rw
+    environment:
+      UID: "${UID}"
+      GID: "${GID}"
+
+      EULA: true
+      TYPE: PAPER
+      SERVER_NAME: Illegal Crime Paper
+      MOTD: Credit
+      VERSION: "1.21.3"
+      INIT_MEMORY: 512m
+      MAX_MEMORY: 6G
+      ENABLE_AUTOPAUSE: true
+      MAX_TICK_TIME: -1
+      JVM_DD_OPTS: "disable.watchdog:true"
+
+      ENFORCE_SECURE_PROFILE: false
+      SNOOPER_ENABLED: false
+      ENABLE_QUERY: false
+
+      BROADCAST_CONSOLE_TO_OPS: false
+      BROADCAST_RCON_TO_OPS: false
+      
+      ONLINE_MODE: false
+      OP_PERMISSION_LEVEL: 2
+      MAX_PLAYERS: 50
+      DIFFICULTY: easy
+      LEVEL: survival
+      
+      MODE: creative
+      LEVEL_TYPE: minecraft:flat
+      ENABLE_COMMAND_BLOCK: true
+      GENERATE_STRUCTURES: false
+      SPAWN_ANIMALS: false
+      SPAWN_MONSTERS: false
+      SPAWN_NPCS: false
+      SPAWN_PROTECTION: 0
+      
+      USE_AIKAR_FLAGS: true
+      LOG_TIMESTAMP: true
+
+      REPLACE_ENV_IN_PLACE: true
+      REPLACE_ENV_DURING_SYNC: true
+      REPLACE_ENV_VARIABLE_PREFIX: CFG_
+
+      ENABLE_RCON: true
+      RCON_PORT: 25575
+      RCON_PASSWORD_FILE: /run/secrets/rcon_password
+
+      CFG_RCON_PASSWORD_FILE: /run/secrets/rcon_password
+      CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
+      CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
+      
+      # RCON_CMDS_STARTUP: |-
+      #   gamerule announceAdvancements false
+
+      PLUGINS: |
+        https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
+
+      MODRINTH_PROJECTS: |
+        freedomchat:NdbpBqOZ
+        luckperms:cfNN7sys
+        multiverse-core:jbQopAkk
+        multiverse-inventories:diNvP5DO
+        multiverse-netherportals:Dkyax1rl
+        signedvelocity:TKC72r9l
+        vaultunlocked:fC53e1Vr
+        worldedit:4jRlujfz
+  
   fabric:
     image: itzg/minecraft-server:2025.3.0-java23
     container_name: illegal_crime_fabric
@@ -199,6 +290,8 @@ services:
     networks:
       illegal_crime_mc_network:
         ipv4_address: "10.100.1.2"
+    ports:
+      - 5434:5432
     volumes:
       - /etc/passwd:/etc/passwd:ro
       - ./luckperms/data:/var/lib/postgresql/data:rw

@@ -13,6 +13,14 @@
 
 /schematics/**
 
+/paper/data/**
+!/paper/data/bukkit.yml
+!/paper/data/spigot.yml
+!/paper/data/plugins
+!/paper/data/plugins/WorldEdit
+!/paper/data/plugins/WorldEdit/schematics/
+!/paper/data/plugins/WorldEdit/schematics/.keep
+
 /fabric/data/**
 !/fabric/data/config
 !/fabric/data/config/worldedit
