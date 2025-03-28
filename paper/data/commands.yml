@@ -1,0 +1,8 @@
+command-block-overrides: []
+ignore-vanilla-permissions: false
+aliases:
+  survival:
+  - mvtp a:survival
+  creative:
+  - mvtp a:creative
+

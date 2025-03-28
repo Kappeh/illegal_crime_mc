@@ -16,6 +16,7 @@
 /paper/data/**
 !/paper/data/bukkit.yml
 !/paper/data/spigot.yml
+!/paper/data/commands.yml
 !/paper/data/plugins
 !/paper/data/plugins/WorldEdit
 !/paper/data/plugins/WorldEdit/schematics/
