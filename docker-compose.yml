@@ -236,6 +236,7 @@ services:
         mods-command:1F0YwdWN
         no-chat-reports:Cg7X9iDa
         packet-fixer:XBM9PO5r
+        random-dust:O4rsiuG0
         redstone-multimeter:kTiP34Lj
         servercore:PgKTFLEL
         servux:u85kwLvC
