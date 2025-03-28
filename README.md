@@ -25,10 +25,10 @@ Follow these steps to set up and configure the project:
     cp path/to/world fabric/data/world
     ```
    
-5. **Adjust permissions (recommended)**: Run the following commands in the root of the repository, replacing `UID` and `GID` with the corresponding values from your `.env` file:
+5. **Adjust permissions (recommended)**: Run the following commands in the root of the repository, replacing `PUID` and `PGID` with the corresponding values from your `.env` file:
     
     ```
-    sudo chown -R UID:GID .
+    sudo chown -R PUID:PGID .
     sudo chmod -R 770 .
     ```
    
@@ -64,8 +64,8 @@ Then, open `.env` in a text editor and set appropriate values for your setup.
 
 |**Environment Variable**|**Description**|
 |---|---|
-|`UID`|The user ID that should be used for file ownership within the project.|
-|`GID`|The group ID that should be used for file ownership within the project.|
+|`PUID`|The user ID that should be used for file ownership within the project.|
+|`PGID`|The group ID that should be used for file ownership within the project.|
 |`VELOCITY_PORT`|The port number where the Velocity proxy service will listen. Default is set to `25565`.|
 |`RCON_PASSWORD`|The password for Remote Console (RCON) access. This should be a secure password.|
 |`FORWARDING_SECRET`|A secret key for forwarding data between services or to the proxy. This should be a secure password.|

@@ -27,3 +27,6 @@
 !/fabric/data/config/worldedit/schematics
 !/fabric/data/config/worldedit/schematics/.keep
 
+# Backups
+/backups/**
+!/backups/.keep

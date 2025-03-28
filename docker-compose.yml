@@ -2,7 +2,7 @@ services:
   velocity:
     image: itzg/mc-proxy:java21-2025.1.0
     container_name: illegal_crime_velocity
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     restart: unless-stopped
     depends_on:
       fabric:
@@ -82,8 +82,8 @@ services:
       - ./paper/plugins:/plugins:ro
       - ./schematics:/data/plugins/WorldEdit/schematics:rw
     environment:
-      UID: "${UID}"
-      GID: "${GID}"
+      UID: "${PUID}"
+      GID: "${PGID}"
 
       EULA: true
       TYPE: PAPER
@@ -166,8 +166,8 @@ services:
       - ./fabric/config:/config:ro
       - ./schematics:/data/config/worldedit/schematics:rw
     environment:
-      UID: "${UID}"
-      GID: "${GID}"
+      UID: "${PUID}"
+      GID: "${PGID}"
 
       EULA: true
       TYPE: FABRIC
@@ -250,7 +250,7 @@ services:
   luckperms_db:
     image: postgres:17.4
     container_name: illegal_crime_luckperms_db
-    user: "${UID}:${GID}"
+    user: "${PUID}:${PGID}"
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U luckperms -d luckperms"]
@@ -268,6 +268,7 @@ services:
     volumes:
       - /etc/passwd:/etc/passwd:ro
       - ./luckperms/data:/var/lib/postgresql/data:rw
+      - ./backups:/backups:rw
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/luckperms_db_password
       POSTGRES_USER: luckperms
