@@ -218,6 +218,7 @@ services:
 
       MODRINTH_PROJECTS: |
         badpackets:hjhT2sMz
+        block-event-separator:R7hmJOUs
         carpet-extra:WDB4578I
         carpet-tis-addition:znBCTqSr
         cloth-config:FgXq8Sfo
