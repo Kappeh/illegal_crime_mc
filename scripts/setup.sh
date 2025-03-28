@@ -10,6 +10,9 @@ cat survival | awk '{ print "mvrule", $0, "survival_the_end" }' | docker exec -i
 cat creative | awk '{ print "mvrule", $0, "creative" }' | docker exec -i illegal_crime_paper rcon-cli
 cat creative | awk '{ print "mvrule", $0, "creative_nether" }' | docker exec -i illegal_crime_paper rcon-cli
 
+docker exec illegal_crime_fabric rcon-cli time set 1000
+docker exec illegal_crime_fabric rcon-cli weather clear
+
 docker exec illegal_crime_paper rcon-cli mvm set gamemode survival survival
 docker exec illegal_crime_paper rcon-cli mvm set gamemode survival survival_nether
 docker exec illegal_crime_paper rcon-cli mvm set gamemode survival survival_the_end

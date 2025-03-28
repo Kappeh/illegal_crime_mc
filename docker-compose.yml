@@ -216,33 +216,6 @@ services:
       CFG_FORWARDING_SECRET_FILE: /run/secrets/forwarding_secret
       CFG_LUCKPERMS_DB_PASSWORD_FILE: /run/secrets/luckperms_db_password
 
-      RCON_CMDS_STARTUP: |-
-        gamerule announceAdvancements false
-        gamerule commandBlocksEnabled true
-        gamerule commandBlockOutput false
-        gamerule doDaylightCycle false
-        gamerule doEntityDrops false
-        gamerule doFireTick false
-        gamerule doInsomnia false
-        gamerule doImmediateRespawn true
-        gamerule doMobLoot false
-        gamerule doMobSpawning false
-        gamerule doPatrolSpawning false
-        gamerule doTileDrops false
-        gamerule doTraderSpawning false
-        gamerule doVinesSpread false
-        gamerule doWeatherCycle false
-        gamerule doWardenSpawning false
-        gamerule keepInventory true
-        gamerule logAdminCommands false
-        gamerule modGriefing false
-        gamerule playersSleepingPercentage 0
-        gamerule recipesUnlock false
-        gamerule showRecipeMessages false
-        gamerule tntExplodes false
-        time set 1000
-        weather clear
-      
       MODRINTH_PROJECTS: |
         badpackets:hjhT2sMz
         carpet-extra:WDB4578I
