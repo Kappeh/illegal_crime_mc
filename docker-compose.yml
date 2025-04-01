@@ -110,7 +110,7 @@ services:
       LEVEL: survival
       
       MODE: creative
-      LEVEL_TYPE: minecraft:flat
+      LEVEL_TYPE: minecraft:default
       ENABLE_COMMAND_BLOCK: true
       GENERATE_STRUCTURES: false
       SPAWN_ANIMALS: false
