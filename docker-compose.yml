@@ -143,6 +143,7 @@ services:
         multiverse-inventories:diNvP5DO
         multiverse-netherportals:Dkyax1rl
         signedvelocity:TKC72r9l
+        stfu-velocity:Y3nJXOQT
         vaultunlocked:fC53e1Vr
         worldedit:4jRlujfz
   
@@ -237,6 +238,7 @@ services:
         melius-essentials:VUp9aVl4
         mods-command:1F0YwdWN
         no-chat-reports:Cg7X9iDa
+        no-join-leave-messages:g3jqChgD
         packet-fixer:XBM9PO5r
         random-dust:O4rsiuG0
         redstone-multimeter:kTiP34Lj
