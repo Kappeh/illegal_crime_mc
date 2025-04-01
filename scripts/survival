@@ -41,7 +41,7 @@ playersSleepingPercentage 0
 projectilesCanBreakBlocks true
 randomTickSpeed 3
 reducedDebugInfo false
-sendCommandFeedback false
+sendCommandFeedback true
 showDeathMessages true
 snowAccumulationHeight 1
 spawnChunkRadius 2
