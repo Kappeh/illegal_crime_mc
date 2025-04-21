@@ -5,4 +5,12 @@ aliases:
   - mvtp a:survival
   creative:
   - mvtp a:creative
+  redstoner_creative:
+  - mvtp a:redstoner_creative
+  redstoner_bigplots:
+  - mvtp a:redstoner_bigplots
+  redstoner_trusted:
+  - mvtp a:redstoner_trusted
+  synergy_plots_1:
+  - mvtp a:synergy_plots_1
 
