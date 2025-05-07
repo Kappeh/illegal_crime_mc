@@ -48,3 +48,7 @@
 # Backups
 /backups/**
 !/backups/.keep
+
+# Java binaries
+/paper/plugins/*.jar
+
