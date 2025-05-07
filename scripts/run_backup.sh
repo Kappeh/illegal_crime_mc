@@ -52,7 +52,7 @@ cp -r "$PROJECT_DIR/schematics" "$BACKUP_DIR_HOST/"
 cp "$PROJECT_DIR/velocity/data/plugins/dclink-velocity/dclink.db" "$BACKUP_DIR_HOST/velocity/data/plugins/dclink-velocity/"
 
 # Copy Multiverse files
-cp -r "$PROJECT_DIR/paper/data/plugins/Multiverse-Core/worlds.yml" "$BACKUP_DIR_HOST/paper/data/plugins/Multiverse-Core/"
+# cp -r "$PROJECT_DIR/paper/data/plugins/Multiverse-Core/worlds.yml" "$BACKUP_DIR_HOST/paper/data/plugins/Multiverse-Core/"
 cp -r "$PROJECT_DIR/paper/data/plugins/Multiverse-Inventories/groups.yml" "$BACKUP_DIR_HOST/paper/data/plugins/Multiverse-Inventories/"
 cp -r "$PROJECT_DIR/paper/data/plugins/Multiverse-Inventories/groups" "$BACKUP_DIR_HOST/paper/data/plugins/Multiverse-Inventories/"
 cp -r "$PROJECT_DIR/paper/data/plugins/Multiverse-Inventories/players" "$BACKUP_DIR_HOST/paper/data/plugins/Multiverse-Inventories/"

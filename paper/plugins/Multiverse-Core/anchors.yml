@@ -1,0 +1,7 @@
+anchors:
+  survival: survival:0.50,73.16,0.50:0.15:-2.40
+  creative: creative:-0.07,121.78,0.08:0.90:0.75
+  synergy_plots_1: synergy_plots_1:0.50,67.00,0.50:0.00:0.00
+  redstoner_trusted: redstoner_trusted:34.50,6.00,-1296.50:0.00:0.00
+  redstoner_creative: redstoner_creative:0.50,68.00,0.50:0.00:0.00
+  redstoner_bigplots: redstoner_bigplots:0.50,67.00,0.50:0.00:0.00
