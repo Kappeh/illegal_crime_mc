@@ -61,6 +61,30 @@ services:
         signedvelocity:Jp1p9BHR
         velocitab:TTtLPunq
 
+  bluemap:
+    image: ghcr.io/bluemap-minecraft/bluemap:v5.7
+    container_name: illegal_crime_bluemap 
+    user: "${PUID}:${PGID}"
+    restart: unless-stopped
+    depends_on:
+      fabric:
+        condition: service_healthy
+        restart: true
+      paper:
+        condition: service_healthy
+        restart: true
+    command: -g -w
+    networks:
+      illegal_crime_mc_network:
+        ipv4_address: "10.100.1.6"
+    ports:
+      - "${MAP_PORT}:8100/tcp"
+    volumes:
+      - ./bluemap/data:/app/data:rw
+      - ./bluemap/web:/app/web:rw
+      - ./bluemap/config:/app/config:rw
+      - ./bluemap/maps:/app/web/maps:ro
+
   paper:
     image: itzg/minecraft-server:2025.3.0-java23
     container_name: illegal_crime_paper
@@ -81,6 +105,7 @@ services:
       - ./paper/config:/config:ro
       - ./paper/plugins:/plugins:ro
       - ./schematics:/data/plugins/WorldEdit/schematics:rw
+      - ./bluemap/maps:/data/bluemap/web/maps:rw
     environment:
       UID: "${PUID}"
       GID: "${PGID}"
@@ -137,6 +162,8 @@ services:
         https://github.com/EssentialsX/Essentials/releases/download/2.20.1/EssentialsX-2.20.1.jar
 
       MODRINTH_PROJECTS: |
+        bluemap:NeDjOeW8
+        chunky:SmZRkQyR
         freedomchat:NdbpBqOZ
         luckperms:cfNN7sys
         multiverse-core:jbQopAkk
@@ -166,6 +193,7 @@ services:
       - ./fabric/data:/data:rw
       - ./fabric/config:/config:ro
       - ./schematics:/data/config/worldedit/schematics:rw
+      - ./bluemap/maps:/data/bluemap/web/maps:rw
     environment:
       UID: "${PUID}"
       GID: "${PGID}"
@@ -220,6 +248,7 @@ services:
       MODRINTH_PROJECTS: |
         badpackets:hjhT2sMz
         block-event-separator:R7hmJOUs
+        bluemap:Dr2hvJBc
         carpet-extra:WDB4578I
         carpet-tis-addition:znBCTqSr
         cloth-config:FgXq8Sfo

@@ -21,12 +21,29 @@
 !/paper/data/plugins/WorldEdit
 !/paper/data/plugins/WorldEdit/schematics/
 !/paper/data/plugins/WorldEdit/schematics/.keep
+!/paper/data/bluemap
+!/paper/data/bluemap/web
+!/paper/data/bluemap/web/maps
+!/paper/data/bluemap/web/maps/.keep
 
 /fabric/data/**
 !/fabric/data/config
 !/fabric/data/config/worldedit
 !/fabric/data/config/worldedit/schematics
 !/fabric/data/config/worldedit/schematics/.keep
+!/fabric/data/bluemap
+!/fabric/data/bluemap/web
+!/fabric/data/bluemap/web/maps
+!/fabric/data/bluemap/web/maps/.keep
+
+/bluemap/data/**
+!/bluemap/data/.keep
+
+/bluemap/maps/**
+!/bluemap/maps/.keep
+
+/bluemap/web/**
+!/bluemap/web/.keep
 
 # Backups
 /backups/**
