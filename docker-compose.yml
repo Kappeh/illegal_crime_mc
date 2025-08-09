@@ -268,8 +268,10 @@ services:
         mods-command:1F0YwdWN
         no-chat-reports:Cg7X9iDa
         no-join-leave-messages:g3jqChgD
+        owo-lib:3Q7oLImc
         packet-fixer:XBM9PO5r
         random-dust:O4rsiuG0
+        redstone-helper:YqT7Ricu
         redstone-multimeter:kTiP34Lj
         servercore:PgKTFLEL
         servux:u85kwLvC
