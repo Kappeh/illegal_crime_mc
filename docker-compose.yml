@@ -93,6 +93,11 @@ services:
       luckperms_db:
         condition: service_healthy
         restart: true
+    healthcheck:
+      test: mc-health
+      start_period: 5m
+      interval: 5s
+      retries: 20
     secrets:
       - rcon_password
       - forwarding_secret
@@ -182,6 +187,11 @@ services:
       luckperms_db:
         condition: service_healthy
         restart: true
+    healthcheck:
+      test: mc-health
+      start_period: 5m
+      interval: 5s
+      retries: 20
     secrets:
       - rcon_password
       - forwarding_secret
